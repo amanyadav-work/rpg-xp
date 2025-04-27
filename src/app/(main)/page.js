@@ -71,7 +71,7 @@ const Page = () => {
             <div className="flex flex-col justify-between gap-10 rounded-2xl bg-muted p-10">
               <p className="text-sm text-muted-foreground ">YOUR QUEST BEGINS</p>
               <p className="text-lg font-medium">
-                You're not just living life—you’re leveling it up. Choose your class, complete real-life quests, and grow in strength, focus, and confidence. This isn’t just a to-do list—it’s your hero’s journey.
+                You&apos;re not just living life—you are leveling it up. Choose your class, complete real-life quests, and grow in strength, focus, and confidence. This isn’t just a to-do list—it’s your hero’s journey.
               </p>
             </div>
           </div>
@@ -84,7 +84,7 @@ const Page = () => {
                   Unlock your potential.
                 </h2>
                 <p className="text-muted-foreground">
-                  Whether you're training your body, expanding your mind, or mastering your craft—our mission is to guide you to your next evolution. Your rivals are procrastination and self-doubt. Let’s crush them.
+                  Whether you&apos;re training your body, expanding your mind, or mastering your craft—our mission is to guide you to your next evolution. Your rivals are procrastination and self-doubt. Let’s crush them.
                 </p>
               </div>
               {/* Character Avatars */}
@@ -115,7 +115,7 @@ const Page = () => {
                   Choose your class
                 </h3>
                 <p className="text-muted-foreground">
-                  Whether you're a Fitness Warrior, Focus Monk, or Study Mage—pick your path and unlock themed quests that help you grow every day.
+                  Whether you&apos;re a Fitness Warrior, Focus Monk, or Study Mage—pick your path and unlock themed quests that help you grow every day.
                 </p>
               </div>
               <div className="flex flex-col">

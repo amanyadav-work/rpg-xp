@@ -29,7 +29,7 @@ const Footer = () => {
 
                     <div className="hidden lg:flex w-full sm:w-1/12 text-xs ">
                         <div className="w-fit flex flex-col gap-4">
-                            <Link className='hover:underline underline-offset-2' href="https://www.amanwebdev.site/" target='_blank'>Owner's Details</Link>  {/* Link to Sister Companies page */}
+                            <Link className='hover:underline underline-offset-2' href="https://www.amanwebdev.site/" target='_blank'>Owner&apos;s Details</Link>  {/* Link to Sister Companies page */}
                             <Link className='hover:underline underline-offset-2' href="/shop">Recent Launches</Link>  {/* Link to Recent Launches page */}
                             <Link  className='hover:underline underline-offset-2' href="/shop">Explore All</Link>  {/* Link to Explore All page */}
                         </div>

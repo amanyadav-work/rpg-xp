@@ -163,7 +163,7 @@ const Tasks = () => {
         <div className='container max-w-[1400px] mx-auto sm:px-6 lg:px-8 pb-20'>
             <section className='mt-10'>
                 <h2 className='text-2xl font-semibold mb-2'>
-                    Your This Week's Tasks
+                    Your This Week&apos;s Tasks
                 </h2>
                 <hr className='border-muted-foreground/40 mb-6' />
                 <div className="flex relative gap-4">
