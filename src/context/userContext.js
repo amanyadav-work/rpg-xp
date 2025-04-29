@@ -18,7 +18,7 @@ const UserProvider = ({ children }) => {
             let result = { ...data?.user } || null
             result.rank = getRankSymbol(result.xp)
             setUser({ ...result })
-            console.log("result", result);
+            console.log("User Data", result);
         }
     }, [data])
 

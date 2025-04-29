@@ -49,7 +49,6 @@ const Tasks = () => {
     const { loading: likeLoading, error: likeError, data: likeData, refetch: likeReFetch } = useFetch('/api/tasks/likes', {}, false, false);
     const [weeklyGoal, setWeeklyGoal] = useState({ xpGoal: 0, coinsGoal: 0 });
     const [weeklyProgress, setWeeklyProgress] = useState({ xp: 0, coins: 0 });
-    console.log("sharedTasks", sharedTasks);
     const [isSharedTask, setIsSharedTask] = useState(null)
 
 

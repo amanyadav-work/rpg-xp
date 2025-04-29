@@ -16,8 +16,6 @@ const Comments = ({ selectedTask, mxh}) => {
     const { loading: commentLoading, error: commentError, data: commentData, refetch: commentReFetch } = useFetch(`/api/tasks/comments?taskId=${selectedTask._id}`, {}, true, false);
     const [input, setInput] = useState('')
 
-    console.log(commentData);
-
     useEffect(() => {
         if (commentData?.comments?.length > 0) {
             setAllComments([...commentData.comments])

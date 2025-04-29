@@ -30,7 +30,6 @@ export async function middleware(req) {
     const { payload } = await jwtVerify(token, new TextEncoder().encode(process.env.JWT_SECRET));
 
     const res = NextResponse.next();
-    console.log('JWT Payload:', payload);
      res.cookies.set('x-user-email', payload);
 
     res.headers.set('x-user', "blueee");

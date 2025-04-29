@@ -41,7 +41,6 @@ const Collectibles = () => {
     const [dailyChests, setDailyChests] = useState([])
 
 
-console.log("COLLLLLECTTIBLESSSS::",collectibles);
 
 const commons = collectibles
 ? collectibles.filter(
@@ -114,15 +113,12 @@ const chests = collectibles
                 data = JSON.parse(data)
                 const savedDate = new Date(data.dayNum)
                 const diffDays = Math.floor((today - savedDate) / (1000 * 60 * 60 * 24))
-                console.log("diffDays:", diffDays, "today:", today, "savedDate:", savedDate);
                 if (diffDays >= 7) shouldGenerateNew = true
             } else {
                 shouldGenerateNew = true
             }
 
             if (shouldGenerateNew) {
-                console.log("7 day diff");
-
                 const lastSunday = new Date(today)
                 lastSunday.setDate(today.getDate() - today.getDay())
 

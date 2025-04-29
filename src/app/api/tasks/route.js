@@ -18,8 +18,6 @@ export async function POST(req) {
       const assignedItem = body.find(item => item.taskId === taskId);
       const taskData = tasks.find(task => task._id.toString() === taskId);
       
-          console.log("[tasks]", tasks,taskData);
-
       return {
         ...taskData.toObject(),
         completed: assignedItem?.completed || false,

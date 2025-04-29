@@ -1,5 +1,5 @@
 'use client'
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useContext } from 'react';
 import {
     Table,
     TableBody,
@@ -20,9 +20,7 @@ import { MoonLoader } from 'react-spinners';
 const Dashboard = () => {
     const { user } = useContext(userContext)
     const { loading, error, data } = useFetch('/api/public', {}, true);
-    useEffect(() => {
-        console.log(`Rendered times`);
-    });
+  
     let allUsers = data?.users || null;
     return (
         <div className="container max-w-[1400px] mx-auto sm:px-6 lg:px-8 pb-20">

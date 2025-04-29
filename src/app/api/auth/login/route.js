@@ -12,7 +12,7 @@ export async function POST(req) {
     const email = formData.get("email");
     const password = formData.get("password");
 
-    let user = await User.findOne({ email }).lean();
+    let user = await User.findOne({ email }).lean().populate('interests');
 
     if (!user) {
         return Response.json({ message: 'User not found' }, { status: 404 });
@@ -26,7 +26,6 @@ export async function POST(req) {
 
     if (user.assignedTasks.length === 0 && user.interests.length > 0) {
         // Assign tasks to the user based on their interests
-        console.log("Assigning tasks to user based on interests...");
         const assignedTasks = await assignTasksToUser(user._id);
         user.assignedTasks = assignedTasks;
     }

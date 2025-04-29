@@ -11,7 +11,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useState } from 'react'
 import { userContext } from '@/context/userContext'
 import { useFetch } from '@/lib/hooks/useFetch'
 import { MoonLoader } from 'react-spinners'
@@ -30,17 +30,38 @@ import { useTheme } from "next-themes";
 const Profile = () => {
   const { loading, error, data } = useFetch('/api/collectibles', {}, true);
   const { user } = useContext(userContext);
-  const character = getCharacterData(user.xp);
+  const character = getCharacterData(user?.xp||0);
   const { theme } = useTheme()
 
   // Set the CSS variable dynamically
   document.documentElement.style.setProperty('--character-color', character.color);
 
   const collectibles = data?.collectible || [];
-  const ownedCommon = collectibles.filter((collectible) => (collectible.type === 'common' && user.collectibles.indexOf(collectible._id) !== -1));
-  const commons = collectibles.filter((collectible) => (collectible.type === 'common' && user.collectibles.indexOf(collectible._id) === -1));
-  const ownedChests = collectibles.filter((collectible) => (collectible.type === 'chest' && user.collectibles.indexOf(collectible._id) !== -1));
+  const userCollectibles = user?.collectibles || [];
+  
+  const ownedCommon = collectibles.filter(
+    (collectible) =>
+      collectible?.type === 'common' &&
+      userCollectibles.includes(collectible._id)
+  );
+  
+  const ownedChests = collectibles.filter(
+    (collectible) =>
+      collectible?.type === 'chest' &&
+      userCollectibles.includes(collectible._id)
+  );
+  
+
   const [current, setCurrent] = useState(null)
+
+  if (!user) {
+    return (
+      <div className="flex justify-center items-center min-h-[70vh]">
+        <MoonLoader size={24} color="gray" />
+      </div>
+    );
+  }
+  
 
   return (
     <div className="container max-w-[1400px] mx-auto p-6">
@@ -51,7 +72,7 @@ const Profile = () => {
 
           <span
             className="absolute top-0 left-0 bg-background text-xs font-semibold px-4 py-1 border-b-4 border-r-4 rounded-br-md"
-            style={{ borderColor: character.color }}>{user.rank} &nbsp; Character</span>
+            style={{ borderColor: character.color }}>{user?.rank} &nbsp; Character</span>
           <img
             src={character.img}
             alt={character.name}
@@ -80,7 +101,7 @@ const Profile = () => {
             <StatItem theme={theme} character={character} icon={<Medal size={22} />} label="Global Rank" value={`#${user.globalRank}`} />
             <StatItem theme={theme} character={character} icon={<FlameIcon size={22} />} label="Experience" value={user.xp} />
             <StatItem theme={theme} character={character} icon={<Coins size={22} />} label="RK Coins" value={user.coins} />
-            <StatItem theme={theme} character={character} icon={<BadgeCheck size={22} />} label="Your Rank" value={user.rank} />
+            <StatItem theme={theme} character={character} icon={<BadgeCheck size={22} />} label="Your Rank" value={user?.rank} />
             <StatItem theme={theme} character={character} icon={<Swords size={22} />} label="Tasks" value={user.assignedTasks.length} />
             <StatItem theme={theme} character={character} icon={<Users size={22} />} label="Collectibles" value={user.collectibles.length} />
             <div className="col-span-2 text-center"> <div className="flex items-center gap-4 py-10">

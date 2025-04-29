@@ -16,6 +16,7 @@ import { toast } from "sonner";
 import { useContext, useState } from "react";
 import { userContext } from "@/context/userContext";
 import { useRouter } from "next/navigation";
+import { getRankSymbol } from "@/utils/helpers";
 
 const baseSchema = z.object({
   email: z.string().email("Invalid email"),
@@ -73,9 +74,13 @@ export function AuthForm({ className, type = "signin", ...props }) {
 
     if (result.success) {
       localStorage.setItem('jwttoken', result.data.jwttoken);
-      setUser(result.data.user);
+      const userWithRank = {
+        ...result.data.user,
+        rank: getRankSymbol(result.data.user.xp),
+      };
+      setUser(userWithRank);
       router.push('/onboarding');
-      console.log("result:",result);
+      console.log("User Data:", result);
       if (isSignup) {
         toast.success("Registration successful. Please check your email for verification.");
       } else {

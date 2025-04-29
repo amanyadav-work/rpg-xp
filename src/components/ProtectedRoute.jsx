@@ -28,7 +28,7 @@ const ProtectedRoute = ({ children }) => {
                     router.push('/dashboard');
                     return;
                 }
-                if ((user && !user.interests.length > 0) && pathname !== '/onboarding' && pathname !== '/') {
+                if ((user && !user.interests?.length > 0) && pathname !== '/onboarding' && pathname !== '/') {
                     router.push('/onboarding');
                     return;
                 }
